@@ -1,193 +1,164 @@
-//第一個作業
-// function draw() { // 畫圖的函數，每秒進到函數執行(大約60次）
-//   background(255); // 設定畫布的背景顏色，背景顏色為255(白)
-//   translate(width/2, height/2); //原本原點在左上角，此指令是把原點放到視窗的中心
-//   scale(1, -1);  // 放大縮小的指令，第二參數為Y軸的放大縮小，負號為上下顛倒
-//   // 從第一點跟第二點連成一線，接著，第二點與第三點連成一線，以此類推到最後一點
-//   for (let i = 0; i < points.length-1; i++) {   // i++ = i+1
-//     line(points[i][0], points[i][1], points[i+1][0], points[i+1][1]); // 0代表Ｘ軸，1代表Ｙ軸，points[i][0]第一個點Ｘ軸，points[i][1]第一點Ｙ軸，points[i+1][0]第二點Ｘ軸，points[i+1][1]第二點Y軸
-//   }
-//   // 最後一個點與第一點連成一線
-//   line(points[points.length-1][0], points[points.length-1][1], points[0][0], points[0][1]); //把最後一點與第一點的連線
-// }
-//=====================================
-// let points = [[-11,0],[-14,1],[-12,2],[-9,3],[-4,3],[-2,7],[0,3],[3,2],[9,1],[14,5],[13,3],[12,0],[13,-2],[10,-1],[4,-2],[3,-4],[1,-3],[-4,-3],[-6,-2],[-6,-7],[-8,-5],[-9,-2],[-13,-1]]; // 利用串列設定23個點
-// let startColor, endColor; // 聲明startColor, endColor
-// function setup() {  //只會執行一次的函數，會先進行執行
-//   createCanvas(windowWidth, windowHeight); //設定一個畫布，寬為整個視窗的寬度（windowWidth），高度為整個視窗的高度（windowHeight）
-//    //把points 內的值都*50
-//   for (let i = 0; i < points.length; i++) {
-//     for (let j = 0; j < points[i].length; j++) {
-//       points[i][j] = points[i][j] * 30;
-//     }
-//   }
-//   startColor = color(255, 0, 0); // 設定起始顏色
-//   endColor = color(0, 255, 0); // 設定結束顏色
-// }
+// let points = [
+// [7,10],[12,6],[12,4],[9,1],[10,-2],[10,-7],[5,-10],[1,-11],[1,-13],[-3,-13],[-14,-4],[-13,4],
+// [-11,9],[-12,13],[-10,16],[-8,17],[-5,13],[3,13],[7,16],[10,15],[10,13],[7,10]
+// ]
 
-// function draw() { // 畫圖的函數，每秒進到函數執行(大約60次）
-//   background(255); // 設定畫布的背景顏色，背景顏色為255(白)
-//   translate(width/2, height/2); //原本原點在左上角，此指令是把原點放到視窗的中心
-//   scale(1, -1); // 放大縮小的指令，第二參數為Y軸的放大縮小，負號為上下顛倒
-//   // 從第一點跟第二點連成一線，接著，第二點與第三點連成一線，以此類推到最後一點
-//   for (let i = 0; i < points.length-1; i++) { // i++ = i+1
-//     // 計算起點與終點之間的漸層顏色
-//     let gradientColor = lerpColor(startColor, endColor, i / (points.length-1));
-//     stroke(gradientColor); // 設定線條顏色為漸層顏色
-//     line(points[i][0], points[i][1], points[i+1][0], points[i+1][1]);// 0代表Ｘ軸，1代表Ｙ軸，points[i][0]第一個點Ｘ軸，points[i][1]第一點Ｙ軸，points[i+1][0]第二點Ｘ軸，points[i+1][1]第二點Y軸
-//   }
-//   // 把最後一個點與第一個點連線
-//   let gradientColor = lerpColor(startColor, endColor, (points.length-1) / (points.length-1)); //設定漸變效果
-//   stroke(gradientColor); // 線條顏色為gradientColor
-//   strokeWeight(20); // 線條設定粗路為20
-//   line(points[points.length-1][0], points[points.length-1][1], points[0][0], points[0][1]);
-// }
+// let points =[[6, -3], [5, 0], [7, 2],[7,4],[6,5],[9,5],[9,6],[8,7],[7,8],[6,8],[5,10],[4,10],[4,9],[5,8],[4,5],[0,5],[-2,4],[-4,1],[-4,-6],[-5,-7],[-10,-6],[-9,-7],[-4,-8],[-3,-7],[-1,-5],[4,4],[3,2],[3,1],[5,-3],[4,-4],[5,-4],[6,-3],[4,1],[5,2],[1,-4],[2,-5],[2,-8],[8,-8],[7,-7],[3,-7],[3,-1],[4,-1],[3,-1],[2,-3],[0,-5],[-4,-2],[-3,-4],[-1,-5],[-1,-9],[5,-10],[6,-9],[0,-8],[0,-5],[1,0],[-1,3],[5,-4],[6,-4],[7,-3],[6,1]];
 
-// let points = [[-11,0],[-14,1],[-12,2],[-9,3],[-4,3],[-2,7],[0,3],[3,2],[9,1],[14,5],[13,3],[12,0],[13,-2],[10,-1],[4,-2],[3,-4],[1,-3],[-4,-3],[-6,-2],[-6,-7],[-8,-5],[-9,-2],[-13,-1]]; // 利用串列設定23個點
-// function setup() {   //只會執行一次的函數，會先進行執行
-//   createCanvas(windowWidth, windowHeight); //設定一個畫布，寬為整個視窗的寬度（windowWidth），高度為整個視窗的高度（windowHeight）
-//   //把points 內的值都*50
-//   for (let i = 0; i < points.length; i++) {
-//     for (let j = 0; j < points[i].length; j++) {
-//       points[i][j] = points[i][j] * 30;
-//     }
-//   }
-// }
+let points = [[-2, 0], [-1,-1], [0, -1],[1,0],[1,2],[0,3],[-1,3],[-2,2],[-3,2],[-4,1],[-4,-2],[-5,-4],[-4,-4],[-3,-2],[-2,-1],[-2,-3], [-2,-4], [-1, -4],[0,-4],[0,-2],[2,-2],[2,-4], [4, -4],[4,1],[3,2],[1,2],[1,2]]; //list資料，
+var fill_colors = "ccd5ae-e9edc9-fefae0-faedcd-d4a373".split("-").map(a=>"#"+a)
+var line_colors = "ffb5a7-fcd5ce-f8edeb-f9dcc4-fec89a".split("-").map(a=>"#"+a)
 
+//++++++設定畫points所有"點"的物件變數++++++
+var ball  //目前要處理的物件，暫時放在ball(隨意取)變數內 
+var balls = []  //把產生的"所有"的物件，為物件的倉庫，所有資料都在此
 
+//++++++設定飛彈物件的變數++++++
+var bullet  //"目前要處理"的物件，暫時放在bullet變數內
+var bullets = []  //把產生"所有"的物件，為物件的倉庫，所有物件資料都在此
 
-// let ctx;
-// function setup() { //只會執行一次的函數，會先進行執行
-// 	createCanvas(windowWidth, windowHeight); //設定一個畫布，寬為整個視窗的寬度（windowWidth），高度為整個視窗的高度（windowHeight）
-// 	background("#ade8f4"); //設定背景顏色
-// 	ctx = canvas.getContext('2d');
-// 	ctx.lineWidth = 20; //線條寬度
-// 	ctx.lineCap = 'round'// 線條端點的形狀為圓形
-	
-//   colorMode(HSB, 360, 100, 100)
-//   noStroke() // 無線條描邊
-// const num = 20 //線條數量
-// for (let i = 0; i < num; i++) { //建立迴圈
-//   gradientLine(ctx,random(width), random(height), random(width), random(height), color(random(60), 50, 80), color(random(30, 90), 50, 100), 40) //每條線條都是從隨機位置到隨機位置
-// }
-// }
-// function gradientLine(ctx, x1, y1, x2, y2, c1, c2) {
-//   const gradient = ctx.createLinearGradient(x1, y1, x2, y2);
-//   gradient.addColorStop(0, c1);
-//   gradient.addColorStop(1, c2);
-//   ctx.strokeStyle = gradient;
+//++++++設定怪物物件的變數++++++
+var monster  //"目前要處理"的物件，暫時放在monster變數內
+var monsters = []  //把產生"所有"的物件，為物件的倉庫，所有物件資料都在此
+//+++++++++++++++++
 
-//   ctx.beginPath();
-//   ctx.moveTo(x1, y1);
-//   ctx.lineTo(x2, y2);
-//   ctx.stroke();
-// }
+//++++++++設定砲台位置
+var shipP
+//++++++++
+
+var score = 0
+
+function preload(){  //程式碼準備執行之前，所執行的程式碼內容，比setup()更早執行
+  elephant_sound = loadSound("sound/elephant.wav")
+  bullet_sound = loadSound("sound/Launching wire.wav")
+} 
+
+function setup() {
+  createCanvas(windowWidth,windowHeight);
+  shipP= createVector(width/2,height/2)
+  for(var i=0;i<60;i=i+1){  //i=0,1,2,3,4......,8,9
+    ball = new Obj({})  //產生一個Obj class元件
+    balls.push(ball)  //把ball的物件放入到balls陣列內
+  }
+
+  for(var i=0;i<20;i=i+1){  //i=0,1,2,3,4......,8,9
+    monster = new Monster({})  //產生一個Monster class元件
+    monsters.push(monster)  //把ball的物件放入到monsters陣列內
+  }
+
+}
+
+function draw() {
+  background(220);
+  // for(var j=0;j<balls.length;j++){
+  //   ball = balls[j]
+  //   ball.draw()
+  //   ball.update()
+  // }
 
 
-// let ctx;
-// let points = [[-11,0],[-14,1],[-12,2],[-9,3],[-4,3],[-2,7],[0,3],[3,2],[9,1],[14,5],[13,3],[12,0],[13,-2],[10,-1],[4,-2],[3,-4],[1,-3],[-4,-3],[-6,-2],[-6,-7],[-8,-5],[-9,-2],[-13,-1]]; // 利用串列設定23個點
-// function setup() {
-// 	//基礎設定
-// 	createCanvas(windowWidth, windowHeight);
-// 	background(100);
-//   for (let i = 0; i < points.length; i++) {
-//     for (let j = 0; j < points[i].length; j++) {
-//       points[i][j] = points[i][j] * 30; //設定鯊魚大小
-//     }
-// 	ctx = canvas.getContext('2d');
-// 	ctx.lineWidth = 20;
-// 	ctx.lineCap = 'round'
-// 	//------
-// 	gradientLine(ctx, 60, 60, 300, 380, 'black', 'blue')
-// 	gradientLine(ctx, 720, 120, 80, 300, 'brown', 'orange')
-// 	gradientLine(ctx, 520, 70, 500, 440, 'lightblue', 'lime')
-// }
-// }
-// function draw() {	
-//   background(255); // 設定畫布的背景顏色，背景顏色為255(白)
-//   translate(width/2, height/2); //此指令是把原點放到視窗的中心(原本原點在左上角)
-//   scale(1, -1);  // 放大縮小的指令，第二參數為Y軸的放大縮小，負號為上下顛倒
-//   // 從第一點跟第二點連成一線，接著，第二點與第三點連成一線，以此類推到最後一點
-//   for (let i = 0; i < points.length-1; i++) {   // i++ = i+1
-//     line(points[i][0], points[i][1], points[i+1][0], points[i+1][1]); // 0代表Ｘ軸，1代表Ｙ軸，points[i][0]第一個點Ｘ軸，points[i][1]第一點Ｙ軸，points[i+1][0]第二點Ｘ軸，points[i+1][1]第二點Y軸
-//   }
-//   // 最後一個點與第一點連成一線
-//   line(points[points.length-1][0], points[points.length-1][1], points[0][0], points[0][1]); //把最後一點與第一點的連線
-
-// }
-
-// // 以下函數主要畫從(x1,y1)~(x2,y2)間，顏色為c1到c2的變化
-
-// function gradientLine(ctx, x1, y1, x2, y2, c1, c2) {
-//   const gradient = ctx.createLinearGradient(x1, y1, x2, y2);
-//   gradient.addColorStop(0, c1);
-//   gradient.addColorStop(1, c2);
-//   ctx.strokeStyle = gradient;
-
-//   ctx.beginPath();
-//   ctx.moveTo(x1, y1);
-//   ctx.lineTo(x2, y2);
-//   ctx.stroke();
-// }
-// function gradientLine(ctx,x1,y1,x2,y2,c1,c2){
-  // const gradient = ctx.createCanvasGradient(x1, y1, x2, y2);
-  //   gradient.addColorStop(0, c1);
-  //   gradient.addColorStop(1, c2);
-  //   ctx.strokeStyle = gradient;
+//鍵盤按下的處理狀況
+  if(keyIsPressed){
+    if(key=="ArrowLeft" || key=="a"){  //按下往左鍵
+      shipP.x = shipP.x-5
+     }
+     if(key=="ArrowRight"|| key=="d"){  //按下往右鍵
+       shipP.x = shipP.x+5
+     }
+     if(key=="ArrowUp"|| key=="w"){  //按下往上鍵
+       shipP.y = shipP.y-5
+     }
+     if(key=="ArrowDown"|| key=="s"){  //按下往下鍵
+       shipP.y = shipP.y+5
+     }
+  }
 
 
-let points = [[-11,0],[-14,1],[-12,2],[-9,3],[-4,3],[-2,7],[0,3],[3,2],[9,1],[14,5],[13,3],[12,0],[13,-2],[10,-1],[4,-2],[3,-4],[1,-3],[-4,-3],[-6,-2],[-6,-7],[-8,-5],[-9,-2],[-13,-1],]; // 利用串列設定23個點
-let startColor, endColor; // 聲明startColor, endColor
-function setup() {  //只會執行一次的函數，會先進行執行
-  createCanvas(windowWidth, windowHeight); //設定一個畫布，寬為整個視窗的寬度（windowWidth），高度為整個視窗的高度（windowHeight）
-   //把points 內的值都*50
-  for (let i = 0; i < points.length; i++) {
-    for (let j = 0; j < points[i].length; j++) {
-      points[i][j] = points[i][j] * 30;
+  //大象的顯示
+  for(let ball of balls){  //只要是陣列的方式，都可以利用此方式來做
+    ball.draw()
+    ball.update()
+    for(let bullet of bullets){  //檢查每一個物件
+      if(ball.isBallinRanger(bullet.p.x,bullet.p.y)){
+        balls.splice(balls.indexOf(ball),1)  //從倉庫balls取出被滑鼠按到的物件編號(ball.indexOf(ball)只取1個
+        bullets.splice(bullets.indexOf(bullet),1)
+        score = score-1
+        elephant_sound.play()
+      }
     }
   }
-  startColor = color(255, 0, 0); // 設定起始顏色
-  endColor = color(0, 255, 0); // 設定結束顏色
+
+  //+++++飛彈的顯示+++++
+  for(let bullet of bullets){
+    bullet.draw()
+    bullet.update()
+  }
+
+  //++++++++++怪物的顯示+++++++++
+  for(let monster of monsters){
+    if(monster.dead == true && monster.timenum>4){ 
+    monster.splice(monster.indexOf(monster),1)
+    }
+    monster.draw()
+    monster.update()
+    for(let bullet of bullets){  //檢查每一個物件
+      if(monster.isBallinRanger(bullet.p.x,bullet.p.y)){
+        //monsters.splice(balls.indexOf(monster),1)  //從倉庫balls取出被滑鼠按到的物件編號(ball.indexOf(ball)只取1個
+        bullets.splice(bullets.indexOf(bullet),1)
+        score = score+1
+        monster.dead = true  //代表該怪物死亡
+       // elephant_sound.play()
+      }
+    }
+  }
+
+  textSize(50)
+  text(score,50,50)  //在座標為(50,50)上顯示score分數內容
+  push()  //重新規劃原點(0,0)，在視窗的中間
+    let dx = mouseX - width/2
+    let dy = mouseY - height/2
+    let angle = atan2(dy,dx)  //分子:dy 分母:dx
+    translate(shipP.x,shipP.y)   //
+    fill("#caf0f8")
+    noStroke()
+    rotate(angle)
+    triangle(50,0,-25,25,-25,-25) 
+    //triangle(-25,25,25,25,0,-50)  //設定三個點，畫成一個三角形
+    fill("#457b9d")
+    ellipse(0,0,50)
+  pop()  //恢復原本設定，原點(0,0)在視窗左上角
 }
-function gradientLine(ctx,x1,y1,x2,y2,c1,c2){
-  const gradient = ctx.createCanvasGradient(x1, y1, x2, y2);
-   gradient.addColorStop(0, c1);
-  gradient.addColorStop(1, c2);
-   ctx.strokeStyle = gradient;
+
+
+function mousePressed(){
+  //++++++++++++++++++產生一個物件++++++++++++++++++++++++
+  // ball = new Obj({  //在滑鼠按下產生一個新的Obj class元件
+  //   p:{x:mouseX,y:mouseY}
+  // }) 
+  // balls.push(ball)  //把ball的物件放入到balls陣列內
+  //++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  //++++++在物件上按下滑鼠，物件消失不見，分數加一分+++++++
+  //   for(let ball of balls){  //檢查每一個物件
+  //     if(ball.isBallinRanger(mouseX,mouseY)){
+  //       balls.splice(balls.indexOf(ball),1)  //從倉庫balls取出被滑鼠按到的物件編號(ball.indexOf(ball)只取1個
+  //       score = score+1
+  //     }
+  //   }
+
+ //++++++按一下產生一個飛彈+++++++
+ bullet = new Bullet({r:20})  //在滑鼠按下的地方，產生一個新的Bullet class元件(產生一個飛彈)  //大括號內可以加上參數
+ bullets.push(bullet)  //把bullet的物件放入bullets陣列內(放入倉庫)
+bullet_sound.play()
 }
-function draw() { // 畫圖的函數，每秒進到函數執行(大約60次）
-  background(255); // 設定畫布的背景顏色，背景顏色為255(白)
-  translate(width/2, height/2); //原本原點在左上角，此指令是把原點放到視窗的中心
-  // 計算縮放比例
-  const scaleAmount = map(mouseX, 0, width, 1, 2);
+
+
+
+ function keyPressed(){
+  if(key==" "){  //按下空白鍵，發射飛彈，跟按下滑鼠功能一樣
+    bullet = new Bullet({})  //在滑鼠按下的地方，產生一個新的Bullet class
+    bullets.push(bullet)  //把bullet的物件放入到bullets陣列內(丟到倉庫)
+    bullet_sound.play()
+  }
   
-  // 重置縮放比例
-  resetMatrix();
-
-  // 設定縮放比例
-  scale(scaleAmount);
-  textSize(50); // 設定文字大小為50
- fill(0); // 設定文字顏色為黑色
- text("鯊魚", 0, 0); // 在畫面中央加入文字“鯊魚”
-  scale(1, -1); // 放大縮小的指令，第二參數為Y軸的放大縮小，負號為上下顛倒
-  // 從第一點跟第二點連成一線，接著，第二點與第三點連成一線，以此類推到最後一點
-  for (let i = 0; i < points.length-1; i++) { // i++ = i+1
-    // 計算起點與終點之間的漸層顏色
-    let gradientColor = lerpColor(startColor, endColor, i / (points.length-1));
-    stroke(gradientColor); // 設定線條顏色為漸層顏色
-    line(points[i][0], points[i][1], points[i+1][0], points[i+1][1]);// 0代表Ｘ軸，1代表Ｙ軸，points[i][0]第一個點Ｘ軸，points[i][1]第一點Ｙ軸，points[i+1][0]第二點Ｘ軸，points[i+1][1]第二點Y軸
-  }
-  // 把最後一個點與第一個點連線
-  let gradientColor = lerpColor(startColor, endColor, (points.length-1) / (points.length-1)); //設定漸變效果
-  stroke(gradientColor); // 線條顏色為gradientColor
-  strokeWeight(20); // 線條設定粗路為20
-
-  for(let i=0;i<points.length-1;i++){
-    line((points[i][0]),(points[i[1]]),(points[i+1][1]))
-    line((points[i][0])*1.1,(points[i[1]])*1.1,(points[i+1][1])*1.1)
-    line((points[i][0])*1.2,(points[i[1]])*1.2,(points[i+1][1])*1.2)
-    line((points[i][0])*1.3,(points[i[1]])*1.3,(points[i+1][1])*1.3)
-    line((points[i][0])*1.4,(points[i[1]])*1.4,(points[i+1][1])*1.4)
-  }
-  line(points[points.length-1][0], points[points.length-1][1], points[0][0], points[0][1]);
 }
